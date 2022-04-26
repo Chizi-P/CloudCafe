@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import colors from '../config/colors';
-import LayoutView from '../view/LayoutView';
+import colors from '../../config/colors';
+import LayoutView from '../LayoutView';
 
 function DetailCardView({ children, title, style }) {
     return (

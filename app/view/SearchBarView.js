@@ -10,7 +10,7 @@ function SearchBarView({ style }) {
     const height = 33
     const paddingHorizontal = 10
 
-    const [placeholder, setPlaceholder] = React.useState('搜尋')
+    // const [placeholder, setPlaceholder] = React.useState('搜尋')
 
     return (
         <BoxView h={height} r={10} style={{
@@ -20,21 +20,22 @@ function SearchBarView({ style }) {
             ...style
         }}>
             <TextInput style={{flex: 1}} 
-                onFocus={() => {
-                    setPlaceholder('')
-                }}
-                onBlur={() => {
-                    setPlaceholder('搜尋')
-                }}
+                // onFocus={() => {
+                //     setPlaceholder('')
+                // }}
+                // onBlur={() => {
+                //     setPlaceholder('搜尋')
+                // }}
+                placeholder='搜尋'
             />
             <LayoutView horizontal margin={10} spacing={3} style={{ position: 'absolute'}}>
                 <Image source={ '' } style={{
                     width: 18, 
                     height: 18,
                 }}/>
-                <Text style={{
+                {/* <Text style={{
                     color: colors.gray
-                }}>{ placeholder }</Text>
+                }}>{ placeholder }</Text> */}
             </LayoutView>
         </BoxView>
     );

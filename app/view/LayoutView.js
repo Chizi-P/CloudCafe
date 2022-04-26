@@ -1,5 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
+import { Animated } from 'react-native-web'
 
 function LayoutView({ 
     children, 
@@ -22,13 +23,15 @@ function LayoutView({
                     style: {
                         ...child.props.style, 
                         ...vertical || !horizontal 
-                        ? { marginBottom: i != lastChildIndex ? spacing: 0 } 
-                        : { marginRight:  i != lastChildIndex ? spacing: 0 }
+                        ? { marginBottom: i != lastChildIndex ?  spacing : 0 } 
+                        : { marginRight:  i != lastChildIndex ? spacing : 0 }
                     }
                 })
             )) }
         </View>
     )
 }
+
+// child.type.prototype == Animated.prototype ||
 
 export default LayoutView

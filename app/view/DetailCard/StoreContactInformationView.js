@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import colors from '../config/colors';
-import LayoutView from '../view/LayoutView';
+import colors from '../../config/colors';
+import LayoutView from '../LayoutView';
 import DetailCardView from './DetailCardView';
 
 function StoreContactInformationView({ 
