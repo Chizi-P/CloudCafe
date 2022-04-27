@@ -51,16 +51,23 @@ function MenuView({ style }) {
                     </>
                 )) }
             </View>
-            <FlatList 
-                data={menu}
-                renderItem={({ item }) => (
-                    <View style={{flexDirection:'row', justifyContent: 'space-between', padding: 10}}>
-                        <Text>{ item.name }</Text>
-                        <Text>{ item.price }</Text>
-                    </View>
-                    
-                )}
-            />
+            {
+                select == 0 ? (
+                    <FlatList 
+                        data={menu}
+                        renderItem={({ item }) => (
+                            <View style={{flexDirection:'row', justifyContent: 'space-between', padding: 10}}>
+                                <Text>{ item.name }</Text>
+                                <Text>{ item.price }</Text>
+                            </View>
+                            
+                        )}
+                    />
+                ) : 
+                select == 1 ? (<></>) : 
+                select == 2 ? (<></>) : {}
+            }
+
             
         </DetailCardView>
     );

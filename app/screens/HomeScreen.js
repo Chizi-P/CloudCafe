@@ -15,35 +15,35 @@ function HomeScreen({ navigation }) {
         <SafeAreaView style={{
             flex: 1
         }}>
+            <ScrollView>
+                <View style={{
+                    height: 30,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginTop: 25,
+                    marginHorizontal: 25
+                }}>
 
-            <View style={{
-                height: 30,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginTop: 25,
-                marginHorizontal: 25
-            }}>
+                    <Text onPress={() => navigation.navigate('Setting')} style={{paddingVertical: 5}}>設定</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                        <LayoutView horizontal spacing={7} style={{alignItems: 'center'}}>
+                            
+                                <Text >{ user.name }</Text>
+                                <Image source={user.avatar} style={{
+                                    
+                                    height: 30,
+                                    width: 30,
+                                    borderRadius: 10,
+                                    backgroundColor: colors.lightGray
+                                }}/>
+                            
+                        </LayoutView>
+                    </TouchableOpacity>
 
-                <Text onPress={() => navigation.navigate('Setting')} style={{paddingVertical: 5}}>設定</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                    <LayoutView horizontal spacing={7} style={{alignItems: 'center'}}>
-                        
-                            <Text >{ user.name }</Text>
-                            <Image source={user.avatar} style={{
-                                
-                                height: 30,
-                                width: 30,
-                                borderRadius: 10,
-                                backgroundColor: colors.lightGray
-                            }}/>
-                        
-                    </LayoutView>
-                </TouchableOpacity>
+                </View>
 
-            </View>
-
-            {/* <ScrollView> */}
+                
                 <LayoutView vertical margin={25} spacing={20}>
                     <Text style={{
                         fontSize: 20
@@ -69,12 +69,13 @@ function HomeScreen({ navigation }) {
                     <FlatList 
                         data={CardData}
                         renderItem={({item}) => (
-                            <CardView {...item} />
+                            <CardView {...item} navigation={navigation}/>
                         )}
                         keyExtractor={() => uuid.v4()}
+                        scrollEnabled={false}
                     />
                 </LayoutView>
-            {/* </ScrollView> */}
+            </ScrollView>
             
         </SafeAreaView>
     );
@@ -84,9 +85,10 @@ function HomeScreen({ navigation }) {
 let CardData = [
     {   
         image: require('./../assets/testImage.jpg'),
-        name: '小咖咖啡店',
+        name: 'Simpe Kaffa Flagship 興波咖啡旗艦店',
         distance : 400,
-        numOfChairsRemaining: 16
+        numOfChairsRemaining: 16,
+        text: '我們致力於將咖啡香散播到城市每個角落'
     }, {
         
         image: require('./../assets/testImage.jpg'),

@@ -22,8 +22,9 @@ function LayoutView({
                 React.cloneElement(child, {
                     style: {
                         ...child.props.style, 
+                        ...child.props.fill ? { marginTop: -margin, marginHorizontal: -margin, paddingTop: margin, paddingHorizontal: margin } : {},
                         ...vertical || !horizontal 
-                        ? { marginBottom: i != lastChildIndex ?  spacing : 0 } 
+                        ? { marginBottom: i != lastChildIndex ? spacing : 0 } 
                         : { marginRight:  i != lastChildIndex ? spacing : 0 }
                     }
                 })

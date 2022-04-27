@@ -7,8 +7,8 @@ import DetailCardView from './DetailCardView';
 function InstantSeatInformationView({ style }) {
 
     const [fold, setFold] = React.useState(true)
-    const foldAnim = React.useRef(new Animated.Value(0)).current
-    const foldYAnim = React.useRef(new Animated.Value(0)).current
+    const foldAnim = React.useRef(new Animated.Value(1)).current
+    const foldYAnim = React.useRef(new Animated.Value(300)).current
     const [remaining, setRemaining] = React.useState(0)
     const [selectFloor, setSelectFloor] = React.useState(0)
 
@@ -24,7 +24,6 @@ function InstantSeatInformationView({ style }) {
     }
 
     const foldOut = () => {
-        // Will change fadeAnim value to 0 in 3 seconds
         Animated.timing(foldAnim, {
           toValue: 0,
           duration: 300

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Alert, TouchableOpacity } from 'react-native';
 import colors from '../../config/colors';
 import LayoutView from '../LayoutView';
 import DetailCardView from './DetailCardView';
@@ -21,9 +21,31 @@ function StoreContactInformationView({
                 </LayoutView>
                 
                 <LayoutView horizontal spacing={10} >
-                    <Box image={ '' }/>
-                    <Box image={ '' }/>
-                    <Box image={ '' }/>
+                    <TouchableOpacity onPress={() => {
+                        Alert.alert("致電店家",
+                        num,
+                        [
+                            {
+                                text: "Cancel",
+                                onPress: () => console.log("Cancel Pressed"),
+                                style: "cancel"
+                            }, {
+                                text: "OK", 
+                                onPress: () => console.log("OK Pressed") 
+                            }
+                        ])
+                    }}>
+                        <Box image={ '' }/>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Box image={ '' }/>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Box image={ '' }/>
+                    </TouchableOpacity>
+                    
                 </LayoutView>
                 
             </LayoutView>
