@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import colors from '../../config/colors';
 import LayoutView from '../LayoutView';
 import DetailCardView from './DetailCardView';
@@ -13,7 +13,8 @@ function BusinessHours({ style }) {
                 alignItems: 'center',
             }}>
                 <Text style={{fontSize: 14}}>營業時間</Text>
-                <Text style={{fontSize: 14, color: colors.clickable}}>收起</Text>
+                {/* <Text style={{fontSize: 14, color: colors.clickable}}>收起</Text> */}
+                <Image source={require('../../assets/BasilIconspng/512px/Outline/Interface/Caret down.png')} style={{height: 20, width: 20}}/>
             </View>
             {/* //TODO: */}
 

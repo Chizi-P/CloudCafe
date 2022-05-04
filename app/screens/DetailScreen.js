@@ -7,12 +7,14 @@ import CopyrightNoticeView from '../view/DetailCard/CopyrightNoticeView'
 import MenuView from '../view/DetailCard/MenuView';
 import StoreContactInformationView from '../view/DetailCard/StoreContactInformationView';
 import InstantSeatInformationView from '../view/DetailCard/InstantSeatInformationView';
+import BackButtonView from '../view/BackButtonView';
 
-function DetailScreen({ route }) {
+function DetailScreen({ navigation, route }) {
 
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: colors.lightGray}}>
             <ScrollView>
+                <BackButtonView navigation={navigation} color='white' style={{position: 'absolute', zIndex: 1, padding: 20}}/>
                 <Image source={ route.params.image } style={{width: '100%', height: 300}}/>
                 <LayoutView margin={25} spacing={20} style={{maringTop: 15}}>
                     <Text style={{fontSize: 20, fontWeight: '500'}}>{ route.params.name }</Text>
@@ -20,7 +22,7 @@ function DetailScreen({ route }) {
                     <BusinessHours/>
                     <InstantSeatInformationView/>
                     <MenuView/>
-                    <StoreContactInformationView/>
+                    <StoreContactInformationView navigation={navigation}/>
                     <CopyrightNoticeView/>
                 </LayoutView>
             </ScrollView>

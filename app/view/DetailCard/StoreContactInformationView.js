@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, Image, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Alert, TouchableOpacity, Linking } from 'react-native';
 import colors from '../../config/colors';
 import LayoutView from '../LayoutView';
-import DetailCardView from './DetailCardView';
 
 function StoreContactInformationView({ 
     avatar = '',
     num = '0987000000',
+    email = 'test@gmail.com',
+    navigation,
     style 
     }) {
     return (
@@ -21,29 +22,20 @@ function StoreContactInformationView({
                 </LayoutView>
                 
                 <LayoutView horizontal spacing={10} >
+                    <TouchableOpacity onPress={() => Linking.openURL('tel:+' + num)}>
+                        <Box image={require('../../assets/BasilIconspng/512px/Solid/Communication/Phone.png')}/>
+                    </TouchableOpacity>
+
                     <TouchableOpacity onPress={() => {
-                        Alert.alert("致電店家",
-                        num,
-                        [
-                            {
-                                text: "Cancel",
-                                onPress: () => console.log("Cancel Pressed"),
-                                style: "cancel"
-                            }, {
-                                text: "OK", 
-                                onPress: () => console.log("OK Pressed") 
-                            }
-                        ])
+                        Linking.openURL('mailto:' + email)
                     }}>
-                        <Box image={ '' }/>
+                        <Box image={require('../../assets/BasilIconspng/512px/Solid/Communication/Envelope.png')}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
-                        <Box image={ '' }/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity>
-                        <Box image={ '' }/>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Chat')
+                    }}>
+                        <Box unavailable image={require('../../assets/BasilIconspng/512px/Solid/Communication/Comment.png')}/>
                     </TouchableOpacity>
                     
                 </LayoutView>
@@ -53,16 +45,23 @@ function StoreContactInformationView({
     );
 }
 
-function Box({ image, style }) {
+function Box({ image, unavailable, style }) {
     return ( 
-        <Image source={image} style={{
-            height: 40, 
-            width: 40, 
-            backgroundColor: 
-            colors.lightGray, 
-            borderRadius: 10, 
+        <View style={{
+            height: 40,
+            width: 40,
+            backgroundColor: colors.lightGray, 
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 10,
             ...style
-        }}/>
+        }}>
+            <Image source={image} style={{
+                height: 24, 
+                width: 24,
+                tintColor: unavailable ? colors.gray : 'black'
+            }}/>
+        </View>
     )
 }
 

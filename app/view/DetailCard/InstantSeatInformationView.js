@@ -129,4 +129,13 @@ function InstantSeatInformationView({ style }) {
     );
 }
 
+function FloorView() {
+    return (
+        <View>
+            <Text style={{alignSelf: 'center', padding: 60}}>座位資訊</Text>
+        </View>
+    )
+}
+
+
 export default InstantSeatInformationView;

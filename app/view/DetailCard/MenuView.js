@@ -4,6 +4,9 @@ import colors from '../../config/colors';
 import LayoutView from '../LayoutView';
 import DetailCardView from './DetailCardView';
 
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+const Tab = createMaterialTopTabNavigator()
+
 function MenuView({ style }) {
 
     const [select, setSelect] = React.useState(0)
@@ -33,8 +36,8 @@ function MenuView({ style }) {
 
     return (
         <DetailCardView style={style}>
-            <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                { options.map((option, i) => (
+            {/* <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}> */}
+                {/* { options.map((option, i) => (
                     <>
                         <Text 
                             style={{
@@ -49,9 +52,16 @@ function MenuView({ style }) {
                             
                         { i != (options.length - 1) ? <Text style={{padding: 10}}>|</Text> : <></> }
                     </>
-                )) }
-            </View>
-            {
+                )) } */}
+            {/* </View> */}
+            {/* <View style={{flex: 1}}> */}
+                <Tab.Navigator>
+                    <Tab.Screen name="菜單" component={Menu} initialParams={{menu}}/>
+                    <Tab.Screen name="氣氛" component={G} />
+                    <Tab.Screen name="優惠" component={G} />
+                </Tab.Navigator>
+            {/* </View> */}
+            {/* {
                 select == 0 ? (
                     <FlatList 
                         data={menu}
@@ -66,12 +76,34 @@ function MenuView({ style }) {
                 ) : 
                 select == 1 ? (<></>) : 
                 select == 2 ? (<></>) : {}
-            }
-
-            
+            } */}
         </DetailCardView>
     );
 }
+
+function Menu({ menu }) {
+    return (
+        <FlatList 
+            data={menu}
+            renderItem={({ item }) => (
+                <View style={{flexDirection:'row', justifyContent: 'space-between', padding: 10}}>
+                    <Text>{ item.name }</Text>
+                    <Text>{ item.price }</Text>
+                </View>
+            )}
+        />
+    )
+}
+
+function G() {
+    return (
+        <View>
+            <Text>321</Text>
+        </View>
+
+    )
+}
+
 
 
 

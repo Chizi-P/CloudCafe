@@ -2,15 +2,20 @@ import React from 'react';
 import { View, SafeAreaView, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import colors from '../config/colors';
 import LayoutView from '../view/LayoutView';
+import BackButtonView from '../view/BackButtonView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ProfileScreen({ navigation }) {
     return (
         <SafeAreaView>
-
-            {/* TODO: back button */}
-
             <ScrollView>
                 <LayoutView margin={30} spacing={10}>
+                    
+                    {/* Top Bar */}
+                    <View style={{ height: 30 }}>
+                        <BackButtonView navigation={navigation}/>
+                    </View>
+
                     <View style={{
                         shadowColor: 'black',
                         shadowOffset:{width: 0, height: 10},
@@ -30,19 +35,51 @@ function ProfileScreen({ navigation }) {
                         />
                     </View>
 
-                    <Item type=' 名稱' value='用戶名' onPress={() => {
+                    <Item 
+                        type=' 名稱' 
+                        value='用戶名' 
+                        icon={require('../assets/BasilIconspng/512px/Outline/Communication/User.png')}
+                        onPress={() => {
 
-                    }}/>
+                        }}/>
                     <Divider/>
-                    <Item type=' 電話' value='09487000000'/>
+                    <Item 
+                        type=' 電話' 
+                        value='09487000000' 
+                        icon={require('../assets/BasilIconspng/512px/Outline/Communication/Phone.png')}
+                    />
                     <Divider/>
-                    <Item type=' 電郵' value='9487@gmail.com'/>
+                    <Item 
+                        type=' 電郵' 
+                        value='9487@gmail.com'
+                        icon={require('../assets/BasilIconspng/512px/Outline/Communication/Envelope.png')}
+                    />
                     <Divider/>
-                    <Item type=' 密碼' value={'************'}/>
+                    <Item 
+                        type=' 密碼' 
+                        value={'************'}
+                        icon={require('../assets/BasilIconspng/512px/Outline/Status/Lock.png')}
+                    />
                     <Divider/>
-                    <Item type=' 登出' color={colors.clickable}/>
+                    <Item 
+                        type=' 登出' 
+                        color={colors.clickable}
+                        icon={require('../assets/BasilIconspng/512px/Outline/Interface/Logout.png')}
+                        onPress={async () => {
+                            await AsyncStorage.removeItem('token')
+                            navigation.navigate('Logout')
+                        }}
+                    />
                     <Divider/>
-                    <Item type=' 刪除帳號' color={colors.warning}/>
+                    <Item 
+                        type=' 刪除帳號' 
+                        color={colors.warning}
+                        icon={require('../assets/BasilIconspng/512px/Outline/Interface/Trash-alt.png')}
+                        onPress={async () => {
+                            await AsyncStorage.removeItem('token')
+                            navigation.navigate('Logout')
+                        }}
+                    />
                     <Divider/>
 
                 </LayoutView>
@@ -56,7 +93,7 @@ function Item({ type, value, icon, onPress, color, style }) {
         <TouchableOpacity onPress={onPress} style={style}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10}}>
                 <View style={{flexDirection: 'row'}}>
-                    <Image source={ icon }/>
+                    <Image source={ icon } style={{height: 14, width: 14, alignSelf: 'center'}}/>
                     <Text style={{color: color}}>{ type }</Text>
                 </View>
                 { value !== undefined ? <Text>{ value }</Text> : <></> }
