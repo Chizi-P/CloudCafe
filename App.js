@@ -5,6 +5,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import WelcomeScreen from './app/screens/WelcomeScreen'
 import HomeScreen from './app/screens/HomeScreen'
+import RegisterScreen from './app/screens/RegisterScreen'
 import DetailScreen from './app/screens/DetailScreen'
 import FavoriteScreen from './app/screens/FavoriteScreen'
 import SearchScreen from './app/screens/SearchScreen'
@@ -16,6 +17,7 @@ import ProfileScreen from './app/screens/ProfileScreen'
 import ScanScreen from './app/screens/ScanScreen'
 import ChatScreen from './app/screens/ChatScreen'
 import OrderScreen from './app/screens/OrderScreen'
+import LoginScreen from './app/screens/LoginScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -41,6 +43,8 @@ export default function App() {
                 }}
             >
                 <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Register" component={RegisterScreen} />
                 <Stack.Screen name="Chat" component={ChatScreen} />
                 <Stack.Screen name="Detail" component={DetailScreen} />
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />

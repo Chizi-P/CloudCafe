@@ -67,7 +67,7 @@ function ProfileScreen({ navigation }) {
                         icon={require('../assets/BasilIconspng/512px/Outline/Interface/Logout.png')}
                         onPress={async () => {
                             await AsyncStorage.removeItem('token')
-                            navigation.navigate('Logout')
+                            navigation.navigate('Login')
                         }}
                     />
                     <Divider/>
@@ -77,7 +77,7 @@ function ProfileScreen({ navigation }) {
                         icon={require('../assets/BasilIconspng/512px/Outline/Interface/Trash-alt.png')}
                         onPress={async () => {
                             await AsyncStorage.removeItem('token')
-                            navigation.navigate('Logout')
+                            navigation.navigate('Login')
                         }}
                     />
                     <Divider/>
